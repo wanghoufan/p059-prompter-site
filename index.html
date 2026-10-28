@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>双屏协同提词器 · 拍采访短视频，两台手机同页看词</title>
+<meta name="description" content="采访类短视频拍摄用的协同提词器：一台手机给演员看自己的词，一台在采访人手里看提问、顺手翻页，两台始终停在同一页。" />
+<style>
+  :root{
+    --paper:#f7f5f1; --ink:#111214; --muted:#6b6b6b; --line:rgba(17,18,20,.12);
+    --accent:#1b3fe8; --radius:18px;
+    --font:"PingFang SC","Hiragino Sans GB","Heiti SC",system-ui,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* hero */
+  header{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+  .kicker{font-size:13px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-bottom:22px}
+  h1{font-size:clamp(34px,5.4vw,54px);font-weight:700;letter-spacing:-.035em;line-height:1.12}
+  h1 em{font-style:normal;color:var(--accent)}
+  .sub{margin-top:20px;font-size:clamp(16px,2vw,19px);color:#3a3a3a;max-width:44em}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:16px;font-weight:600;text-decoration:none;transition:.2s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#1533c4}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{background:rgba(0,0,0,.04)}
+  .note{margin-top:18px;font-size:14px;color:var(--muted);max-width:46em}
+  .note b{color:#b45309}
+
+  /* shots */
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .lead{color:var(--muted);font-size:15px;margin-bottom:34px}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+  .shot{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 14px 36px rgba(10,10,10,.08)}
+  .shot img{width:100%;display:block}
+  .shot figcaption{padding:12px 14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+
+  /* modules */
+  .mods{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .mod{border-top:2px solid var(--accent);padding-top:16px}
+  .mod .id{font-size:12px;letter-spacing:.18em;color:var(--accent);margin-bottom:8px}
+  .mod h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .mod p{font-size:14px;color:#4a4a4a}
+
+  /* download */
+  .dl{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .dl-box{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:#fff}
+  .dl-box h3{font-size:17px;margin-bottom:6px}
+  .dl-box .meta{font-size:13px;color:var(--muted);margin-bottom:16px}
+  .dl-box ul{font-size:14px;color:#3a3a3a;padding-left:18px}
+  .dl-box li{margin:6px 0}
+  .warn{margin-top:16px;padding:12px 14px;border-radius:12px;background:#fff8ed;border:1px solid #f3d9a8;font-size:13px;color:#8a5a00}
+
+  footer{padding:40px 0 64px;font-size:13px;color:var(--muted)}
+  footer a{color:var(--muted)}
+  @media(max-width:760px){
+    .shots,.mods,.dl{grid-template-columns:1fr}
+    header{padding:48px 0 36px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">双屏协同提词器 · Dual-Screen Prompter</div>
+    <h1>两台手机<em>同页看词</em>，<br />谁翻页另一台跟着翻。</h1>
+    <p class="sub">
+      拍采访类短视频时，台词以前只能一句一句递：递纸、口耳相传，或者旁边站个人临时提词。演员记不住，采访的人一边拍还要一边确认「念到哪一句了」，一条片子反复重来。
+      现在把稿子粘一次，两台手机打开同一个链接就是同一页——一台摆在演员面前看自己的词，一台在采访人手里看提问、顺手翻页。
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="download/p059-prompter-1.2.6.apk" download>下载安卓 APK（3.3 MB）</a>
+      <a class="btn btn-ghost" href="#how">看看怎么用</a>
+    </div>
+    <p class="note">
+      拍摄用的第三台手机只负责拍，<b>不装本软件</b>、不参与同步，避免相机和提词抢前台。
+      <br />装好以后应用需要一条<b>分享码</b>才能进入稿库：没有码可以打开界面、看得到排版，但看不到云端稿件、也存不了新稿。
+    </p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>三个页面，一条流程</h2>
+    <p class="lead">底部三个 tab 从左到右就是使用顺序：先建稿，再开拍，最后调排版。</p>
+    <div class="shots">
+      <figure class="shot">
+        <img src="img/s1.png" alt="文稿库：粘贴剧本，保存后生成链接与二维码" />
+        <figcaption>① 文稿库 — 粘贴剧本，保存后生成链接与二维码</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/s2.png" alt="提词器：大字台词、角色分段、翻页" />
+        <figcaption>② 提词器 — 大字台词、按角色分段、上一页/下一页</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/s3.png" alt="分页排版：智能分页与逐页微调" />
+        <figcaption>③ 分页排版 — 智能分页，逐页微调后再同步</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>怎么串起来</h2>
+    <p class="lead">粘一次 → 扫一次 → 两台各就各位，开拍时谁也不用递词。</p>
+    <div class="mods">
+      <div class="mod">
+        <div class="id">M1</div>
+        <h3>建稿</h3>
+        <p>整篇采访稿粘进去，选「直接用原稿」或「AI 智能分页」，按说话人把台词分段，保存后得到一条固定链接和一张二维码。</p>
+      </div>
+      <div class="mod">
+        <div class="id">M2</div>
+        <h3>配对</h3>
+        <p>第二台手机扫二维码或打开同一条带码链接，两台进入同一页台词。不用注册、不选角色、不分主从。</p>
+      </div>
+      <div class="mod">
+        <div class="id">M3</div>
+        <h3>开拍</h3>
+        <p>一台摆在演员面前看自己的词，一台在采访人手里看提问、点「下一页」、调字号、切横屏；两台始终同页、同字号、同横屏状态。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>安装</h2>
+    <p class="lead">Android 8.0 及以上。iOS 未打包。</p>
+    <div class="dl">
+      <div class="dl-box">
+        <h3>安卓 APK</h3>
+        <div class="meta">版本 1.2.6（versionCode 25）· 3.3 MB</div>
+        <ul>
+          <li>下载后允许「安装未知应用」</li>
+          <li>打开即用，不需要注册</li>
+          <li>同签名新版本请覆盖安装，别先卸载</li>
+        </ul>
+        <div class="warn">
+          这个包是最新构建版，<b>未做完整验收</b>；已完整走完真机验收的是 1.1.1（versionCode 8）。日常拍摄建议用网页版。
+        </div>
+        <p style="margin-top:16px">
+          <a class="btn btn-primary" href="download/p059-prompter-1.2.6.apk" download>下载 APK</a>
+        </p>
+      </div>
+      <div class="dl-box">
+        <h3>关于分享码</h3>
+        <div class="meta">这是刻意的门禁，不是故障</div>
+        <ul>
+          <li>没有分享码 → 能打开界面、能看到排版，但稿库是空的，也存不了新稿</li>
+          <li>有分享码 → 两台设备进入同一份稿，翻页、字号、横屏全部同步</li>
+          <li>分享码由作者单独发放，本页不公开</li>
+        </ul>
+        <div class="warn">
+          为什么不公开？分享码等于整个稿库的钥匙：拿到的人可以列出、也能删除别人的稿件，而删除没有回收站、恢复不了。所以只在本人设备上演示。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    双屏协同提词器 · 五件毕业作品之一 · 2026 AI 编程毕业展示<br />
+    技术栈：React 18 + TypeScript + Vite ｜ Netlify Functions ｜ Supabase Postgres ｜ Capacitor 打包
+  </div>
+</footer>
+
+</body>
+</html>
